@@ -1,37 +1,37 @@
-<template>
-  <div class="about">
-    <h1>This is Server Information</h1>
-    <h2>{{info.data}}</h2>
+<template> 
+  <div class="about"> 
+    <h1>This is Server Information</h1> 
+    <h2>{{info.data}}</h2> 
   </div>
-</template>
+</template> 
 <script>
 
-import axios from 'axios';
-export default {
+import axios from 'axios'; 
+export default { 
   data(){
-    return {
+    return { 
       info: ''
     }
   },
   mounted() {
-    if(this.$store.state.user) {
-      const jwt = this.$store.state.user
+    if(this.$store.state.user) { 
+      const jwt = this.$store.state.user 
       .getSignInUserSession()
-      .getIdToken()
-      .getJwtToken();
+      .getIdToken() 
+      .getJwtToken(); 
 
       const config = {
-        headers: {
-          authorization: jwt
+        headers: { 
+          authorization: jwt 
         }
       }
 
-      axios.get('https://r29pm52lfc.execute-api.us-west-2.amazonaws.com/v1/m', config)
-      .then(val => this.info = val)
-      .catch(err => console.log(err))
+      axios.get('https://r29pm52lfc.execute-api.us-west-2.amazonaws.com/v1/m', config) 
+      .then(val => this.info = val) 
+      .catch(err => console.log(err)) 
 
 
     }
   }
 }
-</script>
+</script> 
